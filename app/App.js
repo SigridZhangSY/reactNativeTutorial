@@ -6,12 +6,13 @@ import {
   View,
   Button,
 } from 'react-native';
-import { TabNavigator } from 'react-navigation';
+import { TabNavigator, StackNavigator } from 'react-navigation';
 
 import HomeScreen from './screens/HomeScreen';
 import OrdersListScreen from './screens/OrdersListScreen';
+import ProductionScreen from './screens/ProductionScreen';
 
-const MyApp = TabNavigator({
+const MainScreenNavigator = TabNavigator({
   Home: {
     screen: HomeScreen,
   },
@@ -29,4 +30,9 @@ const MyApp = TabNavigator({
   },
 });
 
-AppRegistry.registerComponent('reactTutorialApp', () => MyApp);
+const simpleApp = StackNavigator({
+  Home: { screen: MainScreenNavigator },
+  Production: { screen: ProductionScreen },
+});
+
+AppRegistry.registerComponent('reactTutorialApp', () => simpleApp);

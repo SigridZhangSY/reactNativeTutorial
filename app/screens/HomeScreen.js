@@ -55,25 +55,22 @@ class HomeScreen extends React.Component {
                 style={[{fontSize: 25}, {color: tintColor}]}
             />
         ),
+        title: 'Production List'
     };
 
     render() {
+        const { navigate } = this.props.navigation;
         return (
             <Container>
-                <Header>
-                    <Body>
-                    <Title>Items</Title>
-                    </Body>
-                </Header>
                 <Content>
-                    <List>
-                        {items.map((item, i) => (<ListItem key={i}>
+                    <List >
+                        {items.map((item, i) => (<ListItem key={i} onPress={() => navigate('Production', { name: `${item.name}` })}>
                                     <Image style={{width: 100, height: 120}} source={{uri: `${item.poster}`}}/>
                                     <Body style={{flex: 1}}>
-                                    <Text>{item.name}</Text>
-                                    <Button iconLeft transparent primary>
-                                        <Icon name='cart'/>
-                                    </Button>
+                                        <Text>{item.name}</Text>
+                                        <Button iconLeft transparent primary>
+                                            <Icon name='cart'/>
+                                        </Button>
                                     </Body>
                                 </ListItem>
                             )

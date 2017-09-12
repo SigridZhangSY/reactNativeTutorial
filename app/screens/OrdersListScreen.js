@@ -16,14 +16,9 @@ class OrdersListScreen extends React.Component {
     render() {
         return (
             <Container>
-                <Header>
-                    <Body>
-                    <Title>Order List</Title>
-                    </Body>
-                </Header>
                 <Content>
                     <Text>
-                        This is Content Section
+                        This is Order List Screen
                     </Text>
                 </Content>
             </Container>
