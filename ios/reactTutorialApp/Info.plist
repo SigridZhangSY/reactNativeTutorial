@@ -50,10 +50,10 @@
 				<true/>
 			</dict>
 			<key>imdb.com</key>
-            <dict>
-            	<key>NSIncludesSubdomains</key>
-                <true/>
-            </dict>
+			<dict>
+				<key>NSIncludesSubdomains</key>
+				<true/>
+			</dict>
 		</dict>
 	</dict>
 	<key>UIAppFonts</key>
