@@ -14,18 +14,21 @@ import { Image } from 'react-native';
 class ProductionList extends React.Component {
     render() {
         const { navigate } = this.props.navigation;
-        const productions = this.props.productions;
+        const { productions, addItemToCart } = this.props;
 
         return (
             <Container>
                 <Content>
                     <List >
-                        {productions.items.map((item, i) => (<ListItem key={i} onPress={() => navigate('Production', { name: `${item.name}` })}>
-                                    <Image style={{width: 100, height: 120}} source={{uri: `${item.poster}`}}/>
+                        {productions.map((production, i) => (<ListItem key={i} onPress={() => navigate('Production', { name: `${production.name}` })}>
+                                    <Image style={{width: 100, height: 120}} source={{uri: `${production.poster}`}}/>
                                     <Body style={{flex: 1}}>
-                                    <Text>{item.name}</Text>
+                                    <Text>{production.name}</Text>
                                     <Button iconLeft transparent primary>
-                                        <Icon name='cart'/>
+                                        <Icon name='cart' onPress={() => addItemToCart({
+                                            production: production,
+                                            count: 1
+                                        })}/>
                                     </Button>
                                     </Body>
                                 </ListItem>

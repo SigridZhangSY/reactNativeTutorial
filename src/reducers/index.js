@@ -1,10 +1,14 @@
 import { combineReducers } from 'redux';
-import shoppingCart from './shoppingCart';
+import { shoppingCart } from './shoppingCart';
 import { productionList } from './production';
 
-const rootReducer = combineReducers({
+const appReducer = combineReducers({
     shoppingCart,
     productionList
 });
+
+const rootReducer = (state, action) => (
+    appReducer(state, action)
+);
 
 export default rootReducer;

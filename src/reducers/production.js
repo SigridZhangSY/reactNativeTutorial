@@ -39,6 +39,6 @@ export const productionList = (state = initState, action) => {
                 failed: true
             };
         default:
-            return initState;
+            return state;
     }
 };
