@@ -10,6 +10,25 @@ import {
 } from 'native-base';
 import { Image } from 'react-native';
 
+const mockData = [
+    {
+        production:{
+            id: 6,
+            name: "Schindler's List",
+            poster: "https://images-na.ssl-images-amazon.com/images/M/MV5BNDE4OTMxMTctNmRhYy00NWE2LTg3YzItYTk3M2UwOTU5Njg4XkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_UX182_CR0,0,182,268_AL_.jpg",
+        },
+        count: 1
+    },
+    {
+        production: {
+            id: 7,
+            name: "Pulp Fiction",
+            poster: "https://images-na.ssl-images-amazon.com/images/M/MV5BMTkxMTA5OTAzMl5BMl5BanBnXkFtZTgwNjA5MDc3NjE@._V1_UX182_CR0,0,182,268_AL_.jpg",
+        },
+        count : 2
+    }
+]
+
 class CartList extends React.Component {
     constructor(props) {
         super(props);
@@ -54,6 +73,14 @@ class CartList extends React.Component {
                         )}
                     </List>
                 </Content>
+                <Button primary style={{
+                    marginTop: 10,
+                    position: 'absolute',
+                    bottom: 0,
+                    right: 0,
+                    borderRadius: 0,
+                    backgroundColor: '#e91e63'
+                }} onPress={() => navigate('NewOrder', {orderItems: items})}><Text>check out</Text></Button>
             </Container>
         );
     }

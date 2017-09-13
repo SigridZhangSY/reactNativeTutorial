@@ -5,6 +5,7 @@ import ProductionListScreen from './screens/ProductionListScreen';
 import OrdersListScreen from './screens/OrdersListScreen';
 import ProductionScreen from './screens/ProductionScreen';
 import ShoppingCartScreen from './screens/ShoppingCartScreen';
+import OrderForm from './components/OrderForm';
 
 export const MainScreenNavigator = TabNavigator({
     Home: {
@@ -30,6 +31,7 @@ export const MainScreenNavigator = TabNavigator({
 const Navigator = StackNavigator({
     Home: { screen: MainScreenNavigator },
     Production: { screen: ProductionScreen },
+    NewOrder: { screen: OrderForm}
 });
 
 export default Navigator;
