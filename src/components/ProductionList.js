@@ -9,7 +9,7 @@ import {
     Text,
     Button
 } from 'native-base';
-import { Image } from 'react-native';
+import { Image, Alert } from 'react-native';
 
 class ProductionList extends React.Component {
     render() {
@@ -25,10 +25,20 @@ class ProductionList extends React.Component {
                                     <Body style={{flex: 1}}>
                                     <Text>{production.name}</Text>
                                     <Button iconLeft transparent primary>
-                                        <Icon name='cart' onPress={() => addItemToCart({
-                                            production: production,
-                                            count: 1
-                                        })}/>
+                                        <Icon name='cart' onPress={() => {
+                                            addItemToCart({
+                                                production: production,
+                                                count: 1
+                                            })
+                                            Alert.alert(
+                                                '',
+                                                'Add 1 《'+ production.name + '》 to shopping cart',
+                                                [
+                                                    {text: 'OK', onPress: () => console.log('OK Pressed')},
+                                                ],
+                                                { cancelable: false }
+                                            )
+                                        }}/>
                                     </Button>
                                     </Body>
                                 </ListItem>
