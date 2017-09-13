@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Header, Title, Content, Footer, FooterTab, Button, Left, Body, Icon, Text } from 'native-base';
+import { Container, Content, Text } from 'native-base';
 
 class ProductionScreen extends React.Component {
     static navigationOptions = ({ navigation }) => ({

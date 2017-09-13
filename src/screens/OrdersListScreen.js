@@ -6,9 +6,8 @@ class OrdersListScreen extends React.Component {
         tabBarLabel: 'Orders',
         tabBarIcon: ({ tintColor }) => (
             <Icon
-                theme={{ iconFamily: 'FontAwesome' }}
                 name="list"
-                style={[{fontSize:25}, {color: tintColor}]}
+                style={[{fontSize:20}, {color: tintColor}]}
             />
         ),
     };

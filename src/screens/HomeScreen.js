@@ -52,7 +52,7 @@ class HomeScreen extends React.Component {
         tabBarIcon: ({tintColor}) => (
             <Icon
                 name="home"
-                style={[{fontSize: 25}, {color: tintColor}]}
+                style={[{fontSize: 20}, {color: tintColor}]}
             />
         ),
         title: 'Production List'
