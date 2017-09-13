@@ -26,11 +26,13 @@ const initState = {
 export const shoppingCart = (state = initState, action) => {
     switch (action.type) {
         case ADD_TO_SHOPPING_CART: {
-            const find = state.items.filter(item => item.production.id == action.payload.production.id);
+            let items = state.items.slice();
+            const find = items.filter(item => item.production.id == action.payload.production.id);
             if (find.length > 0) {
                 find[0].count = find[0].count+ action.payload.count;
                 return {
-                    ...state
+                    ...state,
+                    items: items
                 }
             } else {
                 return {

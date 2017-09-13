@@ -28,7 +28,15 @@ class CartList extends React.Component {
                 <Content>
                     <List >
                         {items.map((item, i) => (
-                                <ListItem key={i} onPress={() => navigate('Production', {name: `${item.production.name}`})}>
+                                <ListItem
+                                    key={i}
+                                    onPress={() => navigate('Production', {name: `${item.production.name}`})}
+                                    style={{
+                                        flex: 1,
+                                        flexDirection: 'row',
+                                        justifyContent: 'space-between',
+                                    }}
+                                >
                                     <CheckBox
                                         checked={this.state["checked" + i]}
                                         onPress={() => {
@@ -36,10 +44,11 @@ class CartList extends React.Component {
                                             newState["checked" + i] = !this.state["checked" + i];
                                             this.setState(newState);
                                         }}/>
-                                    <Image style={{width: 100, height: 120, marginLeft: 10}}
+                                    <Image style={{width: 100, height: 120}}
                                            source={{uri: `${item.production.poster}`}}
                                     />
-                                    <Text>{item.production.name}</Text>
+                                    <Text style={{width: 200}}>{item.production.name}</Text>
+                                    <Text>{item.count}</Text>
                                 </ListItem>
                             )
                         )}
