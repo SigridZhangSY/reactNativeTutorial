@@ -30,9 +30,18 @@ const MainScreenNavigator = TabNavigator({
   },
 });
 
-const simpleApp = StackNavigator({
+const Navigator = StackNavigator({
   Home: { screen: MainScreenNavigator },
   Production: { screen: ProductionScreen },
 });
 
-AppRegistry.registerComponent('reactTutorialApp', () => simpleApp);
+class App extends React.Component {
+  render() {
+    return (
+          <Navigator navigation={this.props.navigation}/>
+    );
+  }
+}
+App.router = MainScreenNavigator.router;
+
+AppRegistry.registerComponent('reactTutorialApp', () => App);
