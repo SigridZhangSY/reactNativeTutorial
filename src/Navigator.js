@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { TabNavigator, StackNavigator } from 'react-navigation';
 
-import HomeScreen from './screens/HomeScreen';
+import ProductionListScreen from './screens/ProductionListScreen';
 import OrdersListScreen from './screens/OrdersListScreen';
 import ProductionScreen from './screens/ProductionScreen';
 import ShoppingCartScreen from './screens/ShoppingCartScreen';
 
 export const MainScreenNavigator = TabNavigator({
     Home: {
-        screen: HomeScreen,
+        screen: ProductionListScreen,
     },
     Cart: {
         screen: ShoppingCartScreen,
