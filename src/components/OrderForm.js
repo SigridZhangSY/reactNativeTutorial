@@ -38,15 +38,19 @@ class OrderForm extends React.Component {
                         </CardItem>
                         {
                             orderItems.map((item, i) => (
-                                <CardItem key={i}>
-                                    <Left>
-                                        <Thumbnail source={{uri: `${item.production.poster}`}} />
-                                    </Left>
-                                    <Text>{item.production.name}</Text>
-                                    <Right>
-                                        <Text>x {item.count}</Text>
-                                    </Right>
-                                </CardItem>
+                                <Item key={i}>
+                                    <CardItem >
+
+                                        <Left>
+                                            <Thumbnail source={{uri: `${item.production.poster}`}}/>
+                                        </Left>
+                                        <Text>{item.production.name}</Text>
+                                        <Right>
+                                            <Text>x {item.count}</Text>
+                                        </Right>
+
+                                    </CardItem>
+                                </Item>
                             ))
                         }
                     </Card>

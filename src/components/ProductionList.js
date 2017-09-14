@@ -34,7 +34,7 @@ class ProductionList extends React.Component {
                                                 '',
                                                 'Add 1 《'+ production.name + '》 to shopping cart',
                                                 [
-                                                    {text: 'OK', onPress: () => console.log('OK Pressed')},
+                                                    {text: 'OK'},
                                                 ],
                                                 { cancelable: false }
                                             )

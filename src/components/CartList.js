@@ -8,7 +8,7 @@ import {
     CheckBox,
     Button
 } from 'native-base';
-import { Image } from 'react-native';
+import { Image, Alert } from 'react-native';
 
 class CartList extends React.Component {
     constructor(props) {
@@ -63,7 +63,17 @@ class CartList extends React.Component {
                     borderRadius: 0,
                     backgroundColor: '#e91e63'
                 }} onPress={() => {
-                    navigate('NewOrder', {orderItems: items.filter(item => this.state["checked" + item.production.id])});
+                    let checkedList = items.filter(item => this.state["checked" + item.production.id]);
+                    if (checkedList.length == 0)
+                        Alert.alert(
+                            '',
+                            'select at least 1 production',
+                            [
+                                {text: 'OK'},
+                            ],
+                            { cancelable: false })
+                    else
+                        navigate('NewOrder', {orderItems: checkedList});
                 }}>
                     <Text>check out</Text>
                 </Button>
