@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Field, reduxForm} from 'redux-form';
-import {Item, Input, Container, Content, Button, Text, Card, CardItem, Icon, Left, Thumbnail} from 'native-base';
+import {Item, Input, Container, Content, Button, Text, Card, CardItem, Left, Right, Thumbnail} from 'native-base';
 
 const validate = values => {
     const errors = {};
@@ -43,11 +43,13 @@ class OrderForm extends React.Component {
                                         <Thumbnail source={{uri: `${item.production.poster}`}} />
                                     </Left>
                                     <Text>{item.production.name}</Text>
+                                    <Right>
+                                        <Text>x {item.count}</Text>
+                                    </Right>
                                 </CardItem>
                             ))
                         }
                     </Card>
-
 
                     <Button block primary style={{
                         marginTop: 10,

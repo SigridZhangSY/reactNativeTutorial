@@ -10,33 +10,15 @@ import {
 } from 'native-base';
 import { Image } from 'react-native';
 
-const mockData = [
-    {
-        production:{
-            id: 6,
-            name: "Schindler's List",
-            poster: "https://images-na.ssl-images-amazon.com/images/M/MV5BNDE4OTMxMTctNmRhYy00NWE2LTg3YzItYTk3M2UwOTU5Njg4XkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_UX182_CR0,0,182,268_AL_.jpg",
-        },
-        count: 1
-    },
-    {
-        production: {
-            id: 7,
-            name: "Pulp Fiction",
-            poster: "https://images-na.ssl-images-amazon.com/images/M/MV5BMTkxMTA5OTAzMl5BMl5BanBnXkFtZTgwNjA5MDc3NjE@._V1_UX182_CR0,0,182,268_AL_.jpg",
-        },
-        count : 2
-    }
-]
-
 class CartList extends React.Component {
     constructor(props) {
         super(props);
         this.state = {};
-        this.props.items.map((item, i) => {
-            this.state["checked" + i] = false ;
+        this.props.items.map((item) => {
+            this.state["checked" + item.production.id] = false ;
         });
     }
+
 
     render() {
         const {navigate} = this.props.navigation;
@@ -57,17 +39,17 @@ class CartList extends React.Component {
                                     }}
                                 >
                                     <CheckBox
-                                        checked={this.state["checked" + i]}
+                                        checked={this.state["checked" + item.production.id]}
                                         onPress={() => {
                                             let newState = {};
-                                            newState["checked" + i] = !this.state["checked" + i];
+                                            newState["checked" + item.production.id] = !this.state["checked" + item.production.id];
                                             this.setState(newState);
                                         }}/>
                                     <Image style={{width: 100, height: 120}}
                                            source={{uri: `${item.production.poster}`}}
                                     />
                                     <Text style={{width: 200}}>{item.production.name}</Text>
-                                    <Text>{item.count}</Text>
+                                    <Text>x {item.count}</Text>
                                 </ListItem>
                             )
                         )}
@@ -80,7 +62,11 @@ class CartList extends React.Component {
                     right: 0,
                     borderRadius: 0,
                     backgroundColor: '#e91e63'
-                }} onPress={() => navigate('NewOrder', {orderItems: items})}><Text>check out</Text></Button>
+                }} onPress={() => {
+                    navigate('NewOrder', {orderItems: items.filter(item => this.state["checked" + item.production.id])});
+                }}>
+                    <Text>check out</Text>
+                </Button>
             </Container>
         );
     }
