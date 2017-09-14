@@ -4,7 +4,6 @@ import { Icon } from 'native-base';
 import ProductionList from '../components/ProductionList';
 import { readProductions } from '../actions/production';
 import { addToCart } from '../actions/shoppingCart';
-import { test } from '../actions/shoppingCart';
 
 
 class ProductionListScreen extends React.Component {
@@ -43,9 +42,6 @@ const mapDispatchToProps = (dispatch) => ({
     },
     addItemToCart: (item) => {
         dispatch(addToCart(item));
-    },
-    doTest: () => {
-        dispatch(test());
     }
 });
 export default connect(mapStateToProps, mapDispatchToProps) (ProductionListScreen);

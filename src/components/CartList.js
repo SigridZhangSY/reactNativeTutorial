@@ -10,6 +10,8 @@ import {
 } from 'native-base';
 import { Image, Alert } from 'react-native';
 
+import NumberInput from './util/NumberInpupt';
+
 class CartList extends React.Component {
     constructor(props) {
         super(props);
@@ -21,8 +23,8 @@ class CartList extends React.Component {
 
 
     render() {
-        const {navigate} = this.props.navigation;
-        const items = this.props.items;
+        const { navigate } = this.props.navigation;
+        const { items, addItemToCart } = this.props;
 
         return (
             <Container>
@@ -48,8 +50,13 @@ class CartList extends React.Component {
                                     <Image style={{width: 100, height: 120}}
                                            source={{uri: `${item.production.poster}`}}
                                     />
-                                    <Text style={{width: 200}}>{item.production.name}</Text>
-                                    <Text>x {item.count}</Text>
+                                    <Text style={{width: 150}}>{item.production.name}</Text>
+                                    <NumberInput defaultValue={item.count} onChange={(updateCount) => {
+                                        addItemToCart({
+                                            ...item,
+                                            count: updateCount - item.count
+                                        });
+                                    }}/>
                                 </ListItem>
                             )
                         )}
