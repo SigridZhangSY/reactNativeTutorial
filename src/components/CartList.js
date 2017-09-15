@@ -6,25 +6,35 @@ import {
     ListItem,
     Text,
     CheckBox,
-    Button
+    Button,
+    Body
 } from 'native-base';
-import { Image, Alert } from 'react-native';
+import {Image, Alert} from 'react-native';
 
-import NumberInput from './util/NumberInpupt';
+import NumberInput from './util/NumberInput';
+import ProductionCard from './productions/ProductionCard';
+
+const Extension = ({item, addItemToCart}) => (
+    <NumberInput style={{position: 'absolute', bottom: 10}} defaultValue={item.count} onChange={(updateCount) => {
+        addItemToCart({
+            ...item,
+            count: updateCount - item.count
+        });
+    }}/>
+);
 
 class CartList extends React.Component {
     constructor(props) {
         super(props);
         this.state = {};
         this.props.items.map((item) => {
-            this.state["checked" + item.production.id] = false ;
+            this.state["checked" + item.production.id] = false;
         });
     }
 
-
     render() {
-        const { navigate } = this.props.navigation;
-        const { items, addItemToCart } = this.props;
+        const {navigate} = this.props.navigation;
+        const {items, addItemToCart} = this.props;
 
         return (
             <Container>
@@ -33,7 +43,6 @@ class CartList extends React.Component {
                         {items.map((item, i) => (
                                 <ListItem
                                     key={i}
-                                    onPress={() => navigate('Production', {name: `${item.production.name}`})}
                                     style={{
                                         flex: 1,
                                         flexDirection: 'row',
@@ -47,16 +56,11 @@ class CartList extends React.Component {
                                             newState["checked" + item.production.id] = !this.state["checked" + item.production.id];
                                             this.setState(newState);
                                         }}/>
-                                    <Image style={{width: 100, height: 120}}
-                                           source={{uri: `${item.production.poster}`}}
-                                    />
-                                    <Text style={{width: 150}}>{item.production.name}</Text>
-                                    <NumberInput defaultValue={item.count} onChange={(updateCount) => {
-                                        addItemToCart({
-                                            ...item,
-                                            count: updateCount - item.count
-                                        });
-                                    }}/>
+                                    <ProductionCard
+                                        style={{position: 'relative', left: 10}}
+                                        production={item.production}
+                                        extension={<Extension item={item} addItemToCart={addItemToCart}/>}
+                                        navigation={this.props.navigation}/>
                                 </ListItem>
                             )
                         )}
@@ -78,7 +82,7 @@ class CartList extends React.Component {
                             [
                                 {text: 'OK'},
                             ],
-                            { cancelable: false })
+                            {cancelable: false})
                     else
                         navigate('NewOrder', {orderItems: checkedList});
                 }}>

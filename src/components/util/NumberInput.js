@@ -6,12 +6,13 @@ import {
 } from 'native-base';
 import {View, StyleSheet} from 'react-native';
 
-const style = StyleSheet.create({
+const styles = StyleSheet.create({
     wrapper:{
         flex: 1,
         flexDirection: 'row',
-        justifyContent: 'space-between',
-        width: 80
+        width: 80,
+        position: 'absolute',
+        right: 15
     },
     input:{
         width: 40,
@@ -70,13 +71,13 @@ class NumberInput extends React.Component {
 
 
     render() {
-        let {onChange} = this.props;
+        let { onChange, style } = this.props;
         return (
-            <View style={style.wrapper}>
-                <Item regular style={style.border}>
-                <Icon name="add" style={style.icon} onPress={this._handleIncrease}/>
-                <Item regular style={style.subBorder}>
-                    <Input style={style.input}
+            <View style={[styles.wrapper, style]}>
+                <Item regular style={styles.border}>
+                <Icon name="add" style={styles.icon} onPress={this._handleIncrease}/>
+                <Item regular style={styles.subBorder}>
+                    <Input style={styles.input}
                            defaultValue={this.state.textInputValue.toString()}
                            keyboardType="numeric"
                            onChangeText={(text) => {
@@ -88,7 +89,7 @@ class NumberInput extends React.Component {
                            }
                     />
                 </Item>
-                <Icon name="remove" style={style.icon} onPress={this._handleDecrease}/>
+                <Icon name="remove" style={styles.icon} onPress={this._handleDecrease}/>
                 </Item>
             </View>
         );

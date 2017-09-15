@@ -6,6 +6,8 @@ const mockData = [
             id: 6,
             name: "Schindler's List",
             poster: "https://images-na.ssl-images-amazon.com/images/M/MV5BNDE4OTMxMTctNmRhYy00NWE2LTg3YzItYTk3M2UwOTU5Njg4XkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_UX182_CR0,0,182,268_AL_.jpg",
+            price: 30,
+            releaseDate: "1993"
         },
         count: 1
     },
@@ -14,6 +16,8 @@ const mockData = [
             id: 7,
             name: "Pulp Fiction",
             poster: "https://images-na.ssl-images-amazon.com/images/M/MV5BMTkxMTA5OTAzMl5BMl5BanBnXkFtZTgwNjA5MDc3NjE@._V1_UX182_CR0,0,182,268_AL_.jpg",
+            price: 25,
+            releaseDate: "1994"
         },
         count : 2
     }

@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import { Icon } from 'native-base';
-import ProductionList from '../components/ProductionList';
+import ProductionList from '../components/productions/ProductionList';
 import { readProductions } from '../actions/production';
 import { addToCart } from '../actions/shoppingCart';
 
